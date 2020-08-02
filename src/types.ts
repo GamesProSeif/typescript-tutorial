@@ -8,7 +8,7 @@ const temperature: number = 28;
 const name: string = 'Seif';
 
 // Array
-const members: string[] = ['Seif', 'Zuma', 'Jakeo'];
+const users: string[] = ['Seif', 'Zuma', 'Jakeo'];
 
 // Any
 const age: any = '26';
