@@ -18,7 +18,6 @@
 			"esnext.intl",
 			"esnext.symbol"
 		],
-		"incremental": true,
 		"sourceRoot": "./src",
 		"outDir": "dist",
 		"inlineSources": true,
