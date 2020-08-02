@@ -6,7 +6,7 @@ const enum MEMBER_TYPE {
 	ADMIN
 };
 
-const seif = {
+const member = {
 	name: 'Seif',
 	level: MEMBER_TYPE.ADMIN
 };
