@@ -21,7 +21,6 @@
 		"sourceRoot": "./src",
 		"outDir": "dist",
 		"inlineSources": true,
-		"inlineSourceMap": true
 	},
 	"include": [
 		"./src/**/*"

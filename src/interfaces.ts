@@ -12,6 +12,7 @@ const seif: Person = {
 };
 
 // Optional Properties
+
 interface PersonOptional {
 	name: string;
 	age: number;
@@ -20,41 +21,45 @@ interface PersonOptional {
 
 const seifOptional: PersonOptional = {
 	name: 'Seif Mansour',
-	age: 17
+	age: 17,
+	job: 'student'
 };
 
 // Readonly Properties
 interface Problem {
 	readonly x: number;
 	readonly y: number;
-	solution: number;
+	solution?: number;
 }
 
 const problem: Problem = {
-	x: 5,
-	y: 3,
-	solution: 0
+	x: 5, y: 3
 };
 
 problem.solution = 8;
 
-// Nesting interfaces
+// problem.x = 2; //
+
+// Nesting Interfaces
 interface PersonNested {
-	name: Name,
-	age: number
+	name: Name;
+	age: number;
+	job?: string;
 }
 
 interface Name {
-	first: string,
+	first: string;
 	last: string;
 }
 
 const seifNested: PersonNested = {
 	name: { first: 'Seif', last: 'Mansour' },
-	age: 17
+	age: 17,
+	job: 'student'
 };
 
-// Class Implements
+// The 'implements' keyword
+
 class PersonClass implements Person {
 	public name: string;
 	public age: number;
@@ -66,8 +71,6 @@ class PersonClass implements Person {
 		this.job = job;
 	}
 }
-
-const seifClass = new PersonClass('Seif Mansour', 17, 'student');
 
 // Extending Interfaces
 interface Animal {
@@ -81,6 +84,6 @@ interface Dog extends Animal {
 
 const doge: Dog = {
 	name: 'Doge',
-	age: 3,
+	age: 5,
 	withSpots: false
 };

@@ -1,25 +1,30 @@
 // Introduction
-const members: Map<string, string> = new Map();
+const serverMembers: Map<string, string> = new Map();
 
-members.set('key', 'value');
+serverMembers.set('123', 'Takio');
 
-// Extending
+interface Guild<T> {
+	members: T
+}
+
+const guild: Guild<Map<string, string>> = {
+	members: new Map()
+}
+
+// Extending Generics
 class Collection<K, V> extends Map<K, V> {
-	public first() {
+	public first(): V {
 		return this.values().next().value;
 	}
 }
 
-class Guild<T extends Map<string, any>> {
-	public members: T;
-
-	public constructor(members: T) {
-		this.members = members;
-	}
+class VoiceChannel {
+	public members: Collection<string, string> = new Collection();
 }
 
-const guild = new Guild<Collection<string, string>>(
-	new Collection()
-);
+const streamChannel = new VoiceChannel();
 
-guild.members.set('0', '1');
+streamChannel.members.set('1', 'Takio');
+streamChannel.members.set('2', 'Rami');
+
+streamChannel.members.first();

@@ -1,19 +1,21 @@
 // Boolean
-const isCold: boolean = true;
+const isCold: boolean = false;
 
 // Number
-const temperature: number = 28;
+const temperature: number = 0xFFFAAA;
 
 // String
-const name: string = 'Seif';
-
-// Array
-const users: string[] = ['Seif', 'Zuma', 'Jakeo'];
+const name: string = 'Takio';
 
 // Any
-const age: any = '26';
+const id: any = 1;
 
-// Void
+// Array
+const users: string[] = ['Murtaja', 'Rami', 'Yatsuki'];
+const temperatures: number[] = [25, 48, 50];
+
+// Void => undefined;
+
 function greet(): void {
 	console.log('Hello world');
 	return;
@@ -22,16 +24,16 @@ function greet(): void {
 // Never
 function neverFunction(): never {
 	while (true) {}
-	throw new Error('lol');
+	throw new Error('This does not work');
 }
 
 // Object
 const nameObject: object = {
-	first: 'Seif',
-	second: 'Mansour'
+	first: 'John',
+	last: 'Doe'
 }
 
-// The `type` keyword
-type phone = string | number;
+// The 'type' keyword
+type Phone = string | number;
 
-const myPhone = '+965666666';
+const myPhone: Phone = '+965 555555';

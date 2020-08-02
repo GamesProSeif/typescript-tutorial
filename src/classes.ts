@@ -1,7 +1,7 @@
-// Public & Private Properties & Methods
+// Public & Private & Readonly Properties & Methods
 class User {
 	public name: string;
-	public age: number;
+	public readonly age: number;
 	private _password: string;
 
 	public constructor(name: string, age: number, password: string) {
@@ -10,47 +10,53 @@ class User {
 		this._password = password;
 	}
 
-	public get password(): string {
-		return this.password;
+	public logName() {
+		console.log(this.name);
+	}
+
+	public get password() {
+		return 'The password is: ' + this._password;
 	}
 }
 
-const user = new User('Seif', 17, 'abcd');
-// console.log(user._password); //
+// const user = new User('Seif', 17, 'abcd');
+
+// user.name = 'Hyperstroke';
+
+// console.log(user.password);
+
+class User1 {
+	public constructor(
+		public name: string,
+		public readonly age: number,
+		private _password: string
+	) {
+		this.name = name;
+		this.age = age;
+		this._password = _password;
+	}
+}
 
 // Properties with default values
 class UserDef {
 	public verified = false;
+	public name: string;
+	public age: number;
 
-	public constructor(
-		public name: string,
-		public age: number,
-	) {
+	public constructor(name: string, age: number) {
 		this.name = name;
 		this.age = age;
 	}
 }
 
-const userDef = new UserDef('Seif', 17);
-console.log(userDef.verified);
+const userDef = new UserDef('Shadow', 27);
+// console.log(userDef.verified); //
 
-// Readonly Properties
-class Client {
-	public readonly id: string;
-
-	public constructor(id: string) {
-		this.id = id;
-	}
-}
-
-const client = new Client('1');
-// client.id = '2'; //
-
-// Extending Classes
+// Extending Classes (Inheritence)
 class Animal {
 	public constructor(
 		public name: string,
-		public age: number,
+		public age: number
 	) {
 		this.name = name;
 		this.age = age;
@@ -58,14 +64,13 @@ class Animal {
 }
 
 class Dog extends Animal {
-	public constructor(
-		name: string, age: number,
-		public withSpots: boolean
-	) {
+	public constructor(name: string, age: number, public withSpots: boolean) {
 		super(name, age);
 		this.withSpots = withSpots;
 	}
 }
+
+const rex = new Dog('shadow', 3, true);
 
 class Cat extends Animal {
 	public talk() {
@@ -73,8 +78,7 @@ class Cat extends Animal {
 	}
 }
 
-const cat = new Cat('Mimi', 5);
-cat.talk();
+const mimi = new Cat('Mimi', 13);
 
 // Protected Properties
 class Bird extends Animal {
@@ -94,41 +98,47 @@ class Parrot extends Bird {
 	}
 }
 
+const bird = new Parrot('Canari', 2);
+bird.feedMultiple(5);
+
 // Accessors
 const maxNameLength = 10;
 
 class Employee {
-	private _fullName: string = '';
+	private _fullname: string = '';
 
-	public get fullName() {
-		return this._fullName;
+	public get fullName(): string {
+		return this._fullname;
 	}
 
 	public set fullName(name: string) {
 		if (name && name.length > maxNameLength) {
 			throw new Error('Exceeded max name length');
 		}
-		this._fullName = name;
+		this._fullname = name;
 	}
 }
+
+const employee = new Employee();
+employee.fullName = '512';
 
 // Static Properties and Methods
 class Grid {
 	public static origin = { x: 0, y: 0 };
 
-	public static getDefaultScale() {
+	public static defaultScale() {
 		return 1;
 	}
 
-	calculateDistanceFromOrigin(point: {x: number; y: number;}) {
+	public calculateDistance(point: { x: number; y: number }) {
 		let xDist = (point.x - Grid.origin.x);
 		let yDist = (point.y - Grid.origin.y);
-		return Math.sqrt(xDist * xDist + yDist * yDist) / Grid.getDefaultScale();
+		return Math.sqrt(xDist ** 2 + yDist ** 2) / Grid.defaultScale();
 	}
 }
 
 // Abstract Classes
-abstract class AnimalAbstract {
+abstract class AnimalAbs {
 	public constructor(
 		public name: string,
 		public age: number
@@ -138,10 +148,9 @@ abstract class AnimalAbstract {
 	}
 }
 
-// const animal = new AnimalAbstract('rex', 5); //
-
-class DogAbstract extends AnimalAbstract {
+class DogAbs extends AnimalAbs {
 	public withSpots = false;
 }
 
-const dog = new DogAbstract('rex', 5);
+const bolbol = new DogAbs('Bolbol', 6);
+
